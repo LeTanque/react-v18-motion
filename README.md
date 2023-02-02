@@ -1,12 +1,9 @@
-# React-Motion
+# React-v18-Motion
 
-[![Build Status](https://travis-ci.org/chenglou/react-motion.svg?branch=master)](https://travis-ci.org/chenglou/react-motion)
-[![npm version](https://badge.fury.io/js/react-motion.svg)](https://www.npmjs.com/package/react-motion)
-[![Bower version](https://badge.fury.io/bo/react-motion.svg)](http://badge.fury.io/bo/react-motion)
-[![react-motion channel on discord](https://img.shields.io/badge/discord-react--motion%40reactiflux-738bd7.svg?style=flat)](https://discordapp.com/invite/0ZcbPKXt5bYzmcI0)
+[![Build Status](https://github.com/LeTanque/react-v18-motion.git/react-v18-motion.svg?branch=main)](https://github.com/LeTanque/react-v18-motion.git/react-v18-motion)
 
 ```js
-import {Motion, spring} from 'react-motion';
+import {Motion, spring} from 'react-v18-motion';
 // In your render...
 <Motion defaultStyle={{x: 0}} style={{x: spring(10)}}>
   {value => <div>{value.x}</div>}
@@ -17,45 +14,35 @@ Animate a counter from `0` to `10`. For more advanced usage, see below.
 
 ### Install
 
-- Npm: `npm install --save react-motion`
+- Npm install coming soon, until then you can manually add the dependency to your `package.json`
+like this:
 
-- Bower: **do not install with `bower install react-motion`, it won't work**. Use `bower install --save https://unpkg.com/react-motion/bower.zip`. Or in `bower.json`:
 ```json
 {
   "dependencies": {
-    "react-motion": "https://unpkg.com/react-motion/bower.zip"
+    "react-v18-motion": "git@github.com:LeTanque/react-v18-motion.git"
   }
 }
-```
-then include as
-```html
-<script src="bower_components/react-motion/build/react-motion.js"></script>
-```
-
-- 1998 Script Tag:
-```html
-<script src="https://unpkg.com/react-motion/build/react-motion.js"></script>
-(Module exposed as `ReactMotion`)
 ```
 
 **Works with React-Native v0.18+**.
 
 ### Demos
-- [Simple Transition](http://chenglou.github.io/react-motion/demos/demo0-simple-transition)
-- [Chat Heads](http://chenglou.github.io/react-motion/demos/demo1-chat-heads)
-- [Draggable Balls](http://chenglou.github.io/react-motion/demos/demo2-draggable-balls)
-- [TodoMVC List Transition](http://chenglou.github.io/react-motion/demos/demo3-todomvc-list-transition)
-- [Photo Gallery](http://chenglou.github.io/react-motion/demos/demo4-photo-gallery)
-- [Spring Parameters Chooser](http://chenglou.github.io/react-motion/demos/demo5-spring-parameters-chooser)
-- [Water Ripples](http://chenglou.github.io/react-motion/demos/demo7-water-ripples)
-- [Draggable List](http://chenglou.github.io/react-motion/demos/demo8-draggable-list)
+- [Simple Transition](https://github.com/LeTanque/react-v18-motion/demos/demo0-simple-transition)
+- [Chat Heads](https://github.com/LeTanque/react-v18-motion/demos/demo1-chat-heads)
+- [Draggable Balls](https://github.com/LeTanque/react-v18-motion/demos/demo2-draggable-balls)
+- [TodoMVC List Transition](https://github.com/LeTanque/react-v18-motion/demos/demo3-todomvc-list-transition)
+- [Photo Gallery](https://github.com/LeTanque/react-v18-motion/demos/demo4-photo-gallery)
+- [Spring Parameters Chooser](https://github.com/LeTanque/react-v18-motion/demos/demo5-spring-parameters-chooser)
+- [Water Ripples](https://github.com/LeTanque/react-v18-motion/demos/demo7-water-ripples)
+- [Draggable List](https://github.com/LeTanque/react-v18-motion/demos/demo8-draggable-list)
 
-[Check the wiki for more!](https://github.com/chenglou/react-motion/wiki/Gallery-of-third-party-React-Motion-demos)
+[Check the wiki for more!](https://github.com/letanque/react-v18-motion/wiki/Gallery-of-third-party-React-v18-Motion-demos)
 
 ### Try the Demos Locally
 ```sh
-git clone https://github.com/chenglou/react-motion.git
-cd react-motion
+git clone https://github.com/letanque/react-v18-motion.git
+cd react-v18-motion
 npm install
 ```
 
@@ -81,9 +68,9 @@ Exports:
 - `TransitionMotion`
 - `presets`
 
-[Here](https://github.com/chenglou/react-motion/blob/9cb90eca20ecf56e77feb816d101a4a9110c7d70/src/Types.js)'s the well-annotated public [Flow type](http://flowtype.org) definition file (you don't have to use Flow with React-motion, but the types help document the API below).
+[Here](https://github.com/letanque/react-v18-motion/blob/9cb90eca20ecf56e77feb816d101a4a9110c7d70/src/Types.js)'s the well-annotated public [Flow type](http://flowtype.org) definition file (you don't have to use Flow with React-v18-motion, but the types help document the API below).
 
-P.S. using TypeScript? [Here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react-motion/index.d.ts) are the React-motion TypeScript definitions!
+P.S. using TypeScript? [Here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/main/types/react-v18-motion/index.d.ts) are the React-v18-motion TypeScript definitions!
 
 ---
 
@@ -98,10 +85,10 @@ Used in conjunction with the components below. Specifies the how to animate to t
   - `damping`: optional, defaults to `26`.
   - `precision`: optional, defaults to `0.01`. Specifies both the rounding of the interpolated value and the speed (internal).
 
-  It's normal not to feel how stiffness and damping affect your spring; use [Spring Parameters Chooser](http://chenglou.github.io/react-motion/demos/demo5-spring-parameters-chooser) to get a feeling. **Usually**, you'd just use the list of tasteful stiffness/damping presets below.
+  It's normal not to feel how stiffness and damping affect your spring; use [Spring Parameters Chooser](https://github.com/LeTanque/react-v18-motion/demos/demo5-spring-parameters-chooser) to get a feeling. **Usually**, you'd just use the list of tasteful stiffness/damping presets below.
 
 ##### - Presets for `{stiffness, damping}`
-Commonly used spring configurations used like so: `spring(10, presets.wobbly)` or `spring(20, {...presets.gentle, precision: 0.1})`. [See here](https://github.com/chenglou/react-motion/blob/9cb90eca20ecf56e77feb816d101a4a9110c7d70/src/presets.js).
+Commonly used spring configurations used like so: `spring(10, presets.wobbly)` or `spring(20, {...presets.gentle, precision: 0.1})`. [See here](https://github.com/letanque/react-v18-motion/blob/9cb90eca20ecf56e77feb816d101a4a9110c7d70/src/presets.js).
 
 ---
 
@@ -138,7 +125,7 @@ Optional. The callback that fires when the animation comes to a rest.
 ---
 
 ### &lt;StaggeredMotion />
-Animates a collection of (**fixed length**) items whose values depend on each other, creating a natural, springy, "staggering" effect [like so](http://chenglou.github.io/react-motion/demos/demo1-chat-heads). This is preferred over hard-coding a delay for an array of `Motions` to achieve a similar (but less natural-looking) effect.
+Animates a collection of (**fixed length**) items whose values depend on each other, creating a natural, springy, "staggering" effect [like so](https://github.com/LeTanque/react-v18-motion/demos/demo1-chat-heads). This is preferred over hard-coding a delay for an array of `Motions` to achieve a similar (but less natural-looking) effect.
 
 #### Usage
 ```jsx
@@ -289,7 +276,7 @@ Optional. Defaults to `styleThatEntered => stripStyle(styleThatEntered.style)`. 
 
 - How do I set the duration of my animation?
 
-[Hard-coded duration goes against fluid interfaces](https://twitter.com/andy_matuschak/status/566736015188963328). If your animation is interrupted mid-way, you'd get a weird completion animation if you hard-coded the time. That being said, in the demo section there's a great [Spring Parameters Chooser](http://chenglou.github.io/react-motion/demos/demo5-spring-parameters-chooser) for you to have a feel of what spring is appropriate, rather than guessing a duration in the dark.
+[Hard-coded duration goes against fluid interfaces](https://twitter.com/andy_matuschak/status/566736015188963328). If your animation is interrupted mid-way, you'd get a weird completion animation if you hard-coded the time. That being said, in the demo section there's a great [Spring Parameters Chooser](https://github.com/LeTanque/react-v18-motion/demos/demo5-spring-parameters-chooser) for you to have a feel of what spring is appropriate, rather than guessing a duration in the dark.
 
 - How do I unmount the `TransitionMotion` container itself?
 

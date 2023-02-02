@@ -5,7 +5,7 @@
   "main": "lib/react-motion.js",
   "module": "lib/react-motion.esm.js",
   "peerDependencies": {
-    "react": "^0.14.9 || ^15.3.0 || ^16.0.0"
+    "react": ">=15.5.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-rc.1",
@@ -92,7 +92,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chenglou/react-motion.git"
+    "url": "https://github.com/letanque/react-v18-motion.git"
   },
   "keywords": [
     "react",
@@ -105,10 +105,6 @@
     "animation",
     "transition",
     "ui"
-  ],
-  "author": [
-    "nkbt",
-    "chenglou"
   ],
   "license": "MIT",
   "dependencies": {
