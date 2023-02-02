@@ -9,3 +9,4 @@ karma.*.js
 test/integration
 demos/demo6/babel.js
 demos/*/Demo.jsx
+src/TransitionMotion.js
