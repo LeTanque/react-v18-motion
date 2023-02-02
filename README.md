@@ -1,6 +1,5 @@
 # React-v18-Motion
 
-[![Build Status](https://github.com/LeTanque/react-v18-motion.git/react-v18-motion.svg?branch=main)](https://github.com/LeTanque/react-v18-motion.git/react-v18-motion)
 
 ```js
 import {Motion, spring} from 'react-v18-motion';
