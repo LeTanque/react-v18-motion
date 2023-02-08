@@ -6,7 +6,7 @@ import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import { uglify } from 'rollup-plugin-uglify';
 import pkg from './package.json';
 
-const input = './src/react-motion.js';
+const input = './src/react-motion.ts';
 const name = 'ReactMotion';
 const globals = {
   react: 'React',

@@ -1,13 +1,19 @@
 {
-  "parser": "babel-eslint",
-  "extends": ["airbnb", "prettier"],
+  "parser": "@babel/eslint-parser",
+  "extends": [
+    "airbnb",
+    "prettier"
+  ],
   "env": {
     "browser": true,
     "es6": true,
     "jasmine": true
   },
   "rules": {
-    "eqeqeq": [2, "allow-null"],
+    "eqeqeq": [
+      2,
+      "allow-null"
+    ],
     "id-length": 0,
     "no-console": 0, // use it for warnings
     "no-nested-ternary": 0,
@@ -22,8 +28,14 @@
     "object-curly-newline": 0,
     "function-paren-newline": 0,
     "prefer-destructuring": 0,
-    "camelcase": ["error", {"allow": ["^UNSAFE_"]}],
-
+    "camelcase": [
+      "error",
+      {
+        "allow": [
+          "^UNSAFE_"
+        ]
+      }
+    ],
     "react/jsx-wrap-multilines": 0,
     "react/jsx-one-expression-per-line": 0,
     "react/no-unused-state": 0,
@@ -31,9 +43,13 @@
     "react/destructuring-assignment": 0,
     "react/no-did-mount-set-state": 2,
     "react/no-multi-comp": 0,
-    "react/jsx-boolean-value": [2, "always"],
+    "react/jsx-boolean-value": [
+      2,
+      "always"
+    ],
     "react/sort-comp": [
-      2, {
+      2,
+      {
         "order": [
           "displayName",
           "propTypes",
@@ -63,7 +79,6 @@
         ]
       }
     ],
-
     "max-len": 0,
     "no-mixed-operators": 0,
     "no-continue": 0,

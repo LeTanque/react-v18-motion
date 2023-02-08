@@ -1,12 +1,15 @@
 /* @flow */
 
+import { ReactElement } from "react";
+
 // Babel 5.x doesn't support type parameters, so we make this alias here out of
 // Babel's sight.
 /* eslint-disable spaced-comment, no-undef */
 /*::
-import type {Element} from 'react';
-export type ReactElement = Element<*>;
+import {Element} from 'react';
+export type ReactElement = Element<any>;
 */
+
 
 // === basic reused types ===
 // type of the second parameter of `spring(val, config)` all fields are optional
@@ -41,9 +44,9 @@ export type MotionProps = {
 
 // === StaggeredMotion ===
 export type StaggeredProps = {
-  defaultStyles?: Array<PlainStyle>,
-  styles: (previousInterpolatedStyles: ?Array<PlainStyle>) => Array<Style>,
-  children: (interpolatedStyles: Array<PlainStyle>) => ReactElement,
+  defaultStyles?: PlainStyle[],
+  styles: (previousInterpolatedStyles: PlainStyle[] | null | undefined) => PlainStyle[],
+  children: (interpolatedStyles: PlainStyle[]) => ReactElement,
 };
 
 // === TransitionMotion ===
@@ -59,7 +62,7 @@ export type TransitionPlainStyle = {
   style: PlainStyle,
 };
 export type WillEnter = (styleThatEntered: TransitionStyle) => PlainStyle;
-export type WillLeave = (styleThatLeft: TransitionStyle) => ?Style;
+export type WillLeave = any;
 export type DidLeave = (styleThatLeft: { key: string, data?: any }) => void;
 
 export type TransitionProps = {
@@ -67,10 +70,12 @@ export type TransitionProps = {
   styles:
     | Array<TransitionStyle>
     | ((
-        previousInterpolatedStyles: ?Array<TransitionPlainStyle>,
+        previousInterpolatedStyles: TransitionPlainStyle[] | null | undefined,
       ) => Array<TransitionStyle>),
   children: (interpolatedStyles: Array<TransitionPlainStyle>) => ReactElement,
-  willEnter?: WillEnter,
+  willEnter: WillEnter,
   willLeave?: WillLeave,
-  didLeave?: DidLeave,
+  didLeave: DidLeave,
 };
+export { ReactElement };
+

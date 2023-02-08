@@ -23,7 +23,7 @@ export default function mergeDiff(
   onRemove: (
     prevIndex: number,
     prevStyleCell: TransitionStyle,
-  ) => ?TransitionStyle,
+  ) => TransitionStyle,
 ): Array<TransitionStyle> {
   // bookkeeping for easier access of a key's index below. This is 2 allocations +
   // potentially triggering chrome hash map mode for objs (so it might be faster
@@ -40,7 +40,7 @@ export default function mergeDiff(
   // first, an overly elaborate way of merging prev and next, eliminating
   // duplicates (in terms of keys). If there's dupe, keep the item in next).
   // This way of writing it saves allocations
-  let ret = [];
+  let ret: TransitionStyle[] = [];
   for (let i = 0; i < next.length; i++) {
     ret[i] = next[i];
   }

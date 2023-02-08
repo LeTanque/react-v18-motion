@@ -6,7 +6,7 @@ import defaultNow from 'performance-now';
 import defaultRaf from 'raf';
 import shouldStopAnimation from './shouldStopAnimation';
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 
 import type {
   ReactElement,
@@ -15,6 +15,7 @@ import type {
   Velocity,
   StaggeredProps,
 } from './Types';
+import { findPrevious } from '@codemirror/search';
 
 const msPerFrame = 1000 / 60;
 
@@ -42,7 +43,7 @@ function shouldStopAnimationAll(
 
 export default class StaggeredMotion extends React.Component<
   StaggeredProps,
-  StaggeredMotionState,
+  StaggeredMotionState
 > {
   static propTypes = {
     // TOOD: warn against putting a config in here
@@ -57,9 +58,8 @@ export default class StaggeredMotion extends React.Component<
   }
 
   defaultState(): StaggeredMotionState {
-    const { defaultStyles, styles } = this.props;
-    const currentStyles: Array<PlainStyle> =
-      defaultStyles || styles().map(stripStyle);
+    const { defaultStyles } = this.props;
+    const currentStyles: PlainStyle[] = defaultStyles || []
     const currentVelocities = currentStyles.map(currentStyle =>
       mapToZero(currentStyle),
     );
@@ -72,7 +72,7 @@ export default class StaggeredMotion extends React.Component<
   }
 
   unmounting: boolean = false;
-  animationID: ?number = null;
+  animationID: number | null = null;
   prevTime = 0;
   accumulatedTime = 0;
   // it's possible that currentStyle's value is stale: if props is immediately
@@ -80,7 +80,7 @@ export default class StaggeredMotion extends React.Component<
   // at 0 (didn't have time to tick and interpolate even once). If we naively
   // compare currentStyle with destVal it'll be 0 === 0 (no animation, stop).
   // In reality currentStyle should be 400
-  unreadPropStyles: ?Array<Style> = null;
+  unreadPropStyles: Array<Style> = [];
 
   // after checking for unreadPropStyles != null, we manually go set the
   // non-interpolating values (those that are a number, without a spring
@@ -188,10 +188,10 @@ export default class StaggeredMotion extends React.Component<
         msPerFrame;
       const framesToCatchUp = Math.floor(this.accumulatedTime / msPerFrame);
 
-      let newLastIdealStyles = [];
-      let newLastIdealVelocities = [];
-      let newCurrentStyles = [];
-      let newCurrentVelocities = [];
+      let newLastIdealStyles: PlainStyle[] = [];
+      let newLastIdealVelocities: PlainStyle[] = [];
+      let newCurrentStyles: PlainStyle[] = [];
+      let newCurrentVelocities: PlainStyle[] = [];
 
       for (let i = 0; i < destStyles.length; i++) {
         const destStyle = destStyles[i];
@@ -265,7 +265,7 @@ export default class StaggeredMotion extends React.Component<
         lastIdealVelocities: newLastIdealVelocities,
       });
 
-      this.unreadPropStyles = null;
+      this.unreadPropStyles = [];
 
       this.startAnimationIfNecessary();
     });

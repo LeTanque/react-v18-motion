@@ -116,12 +116,12 @@ function mergeAndSync(
   willEnter: WillEnter,
   willLeave: WillLeave,
   didLeave: DidLeave,
-  oldMergedPropsStyles: Array<TransitionStyle>,
-  destStyles: Array<TransitionStyle>,
-  oldCurrentStyles: Array<PlainStyle>,
-  oldCurrentVelocities: Array<Velocity>,
-  oldLastIdealStyles: Array<PlainStyle>,
-  oldLastIdealVelocities: Array<Velocity>,
+  oldMergedPropsStyles: Array<TransitionStyle> | [],
+  destStyles: Array<TransitionStyle> | [],
+  oldCurrentStyles: Array<PlainStyle> | [],
+  oldCurrentVelocities: Array<Velocity> | [],
+  oldLastIdealStyles: Array<PlainStyle> | [],
+  oldLastIdealVelocities: Array<Velocity> | [],
 ): [
   Array<TransitionStyle>,
   Array<PlainStyle>,
@@ -162,13 +162,13 @@ function mergeAndSync(
     },
   );
 
-  let newCurrentStyles = [];
-  let newCurrentVelocities = [];
-  let newLastIdealStyles = [];
-  let newLastIdealVelocities = [];
+  let newCurrentStyles: Array<any> = [];
+  let newCurrentVelocities: Array<any> = [];
+  let newLastIdealStyles: Array<any> = [];
+  let newLastIdealVelocities: Array<any> = [];
   for (let i = 0; i < newMergedPropsStyles.length; i++) {
     const newMergedPropsStyleCell = newMergedPropsStyles[i];
-    let foundOldIndex = null;
+    let foundOldIndex: number | null = null;
     for (let j = 0; j < oldMergedPropsStyles.length; j++) {
       if (oldMergedPropsStyles[j].key === newMergedPropsStyleCell.key) {
         foundOldIndex = j;
@@ -297,7 +297,7 @@ export default class TransitionMotion extends React.Component<
     if (defaultStyles == null) {
       oldMergedPropsStyles = destStyles;
     } else {
-      oldMergedPropsStyles = (defaultStyles: any).map(defaultStyleCell => {
+      oldMergedPropsStyles = defaultStyles.map(defaultStyleCell => {
         // TODO: key search code
         for (let i = 0; i < destStyles.length; i++) {
           if (destStyles[i].key === defaultStyleCell.key) {
@@ -310,7 +310,7 @@ export default class TransitionMotion extends React.Component<
     const oldCurrentStyles =
       defaultStyles == null
         ? destStyles.map(s => stripStyle(s.style))
-        : (defaultStyles: any).map(s => stripStyle(s.style));
+        : defaultStyles.map(s => stripStyle(s.style));
     const oldCurrentVelocities =
       defaultStyles == null
         ? destStyles.map(s => mapToZero(s.style))
@@ -325,7 +325,7 @@ export default class TransitionMotion extends React.Component<
       // Because this is an old-style createReactClass component, Flow doesn't
       // understand that the willEnter and willLeave props have default values
       // and will always be present.
-      (willEnter: any),
+      willEnter,
       (willLeave: any),
       (didLeave: any),
       oldMergedPropsStyles,
@@ -356,9 +356,9 @@ export default class TransitionMotion extends React.Component<
       lastIdealStyles,
       lastIdealVelocities,
     ] = mergeAndSync(
-      (this.props.willEnter: any),
-      (this.props.willLeave: any),
-      (this.props.didLeave: any),
+      this.props.willEnter,
+      this.props.willLeave,
+      this.props.didLeave,
       this.state.mergedPropsStyles,
       unreadPropStyles,
       this.state.currentStyles,
@@ -484,9 +484,9 @@ export default class TransitionMotion extends React.Component<
         newLastIdealStyles,
         newLastIdealVelocities,
       ] = mergeAndSync(
-        (this.props.willEnter: any),
-        (this.props.willLeave: any),
-        (this.props.didLeave: any),
+        this.props.willEnter,
+        this.props.willLeave,
+        this.props.didLeave,
         this.state.mergedPropsStyles,
         destStyles,
         this.state.currentStyles,

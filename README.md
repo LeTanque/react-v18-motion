@@ -149,10 +149,10 @@ Aka "the current spring's destination value is the interpolating value of the pr
 
 #### Props
 
-##### - styles: (previousInterpolatedStyles: ?Array&lt;PlainStyle>) => Array&lt;Style>
+##### - styles: (: ?Array&lt;PlainStyle>) => Array&lt;Style>
 Required **function**. **Don't forget the "s"**!
 
-- `previousInterpolatedStyles`: the previously interpolating (array of) styles (`undefined` at first render, unless `defaultStyles` is provided).
+- ``: the previously interpolating (array of) styles (`undefined` at first render, unless `defaultStyles` is provided).
 
 - Return: must return an array of `Style`s containing the destination values, e.g. `[{x: spring(10)}, {x: spring(20)}]`.
 

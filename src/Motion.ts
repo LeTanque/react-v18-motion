@@ -43,7 +43,7 @@ export default class Motion extends React.Component<MotionProps, MotionState> {
 
   unmounting: boolean = false;
   wasAnimating: boolean = false;
-  animationID: ?number = null;
+  animationID: number | null | undefined = null;
   prevTime: number = 0;
   accumulatedTime: number = 0;
 
@@ -64,7 +64,7 @@ export default class Motion extends React.Component<MotionProps, MotionState> {
   // at 0 (didn't have time to tick and interpolate even once). If we naively
   // compare currentStyle with destVal it'll be 0 === 0 (no animation, stop).
   // In reality currentStyle should be 400
-  unreadPropStyle: ?Style = null;
+  unreadPropStyle: Style | null | undefined = null;
   // after checking for unreadPropStyle != null, we manually go set the
   // non-interpolating values (those that are a number, without a spring
   // config)
